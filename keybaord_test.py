@@ -145,7 +145,7 @@ def bfunc():
     global player4
     
     print("tossing player 4")
-    four.add_one(four.tosses)
+    four.add_one("tosses")
     player1 = False
     player2 = False
     player3 = False
@@ -155,7 +155,7 @@ def bfunc():
 def nfunc():
 
     print("catch player 4")
-    four.add_one(four.catches)
+    four.add_one("catches")
  
 
 def mfunc():
@@ -163,13 +163,13 @@ def mfunc():
     global player2
     
     print("drop player 4")
-    four.add_one(four.drops)
+    four.add_one("drops")
     if player1:
         #player1 last tossed
-        one.add_one(one.points)
+        one.add_one("points")
     elif player2:
         #player2 last tossed
-        two.add_one(two.points)
+        two.add_one("points")
     else:
         pass
 
@@ -182,16 +182,16 @@ def qwefunc():
 
     if player1:
         #player1point
-        one.add_one(one.points)
+        one.add_one("points")
     elif player2:
         #player2point
-        two.add_one(two.points)
+        two.add_one("points")
     elif player3:
         #player3point
-        three.add_one(three.points)
+        three.add_one("points")
     elif player4:
         #player4point
-        four.add_one(four.points)
+        four.add_one("points")
     else:
         pass
 
