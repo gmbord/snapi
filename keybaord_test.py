@@ -30,11 +30,11 @@ def asdfunc():
 # keyboard.add_hotkey('q', qfunc)
 # keyboard.add_hotkey('w', wfunc)
 # keyboard.add_hotkey('e', efunc)
-while True:
+def main():
     l = keyboard.read_key()
     print()
     print(l)
+    main()    
 
+main()
 
-keyboard.wait("esc")
-print("end")
