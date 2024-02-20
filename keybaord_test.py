@@ -1,5 +1,24 @@
 import keyboard
 
+class Player:
+    def __init__(self):
+        self.tosses = 0
+        self.points = 0
+        self.catches = 0
+        self.drops = 0
+
+    def get_stats(self):
+        return (self.tosses, self.points, self.catches, self.drops)
+    
+    def add_one(self, var):
+        self.__setattr__(var, self.__getattribute__(var) + 1)
+
+one = Player()
+two = Player()
+three = Player()
+four = Player()
+
+
 player1 = False
 player2 = False
 player3 = False
@@ -12,7 +31,9 @@ def qfunc():
     global player3
     global player4
     
-    print("tossingq")
+    print("tossing player 1")
+    one.add_one(one.tosses)
+
     player1 = True
     player2 = False
     player3 = False
@@ -21,20 +42,22 @@ def qfunc():
 
 def wfunc():
 
-    print("catchw")
+    print("catch player 1")
+    one.add_one(one.catches)
  
 
 def efunc():
     global player3
     global player4
     
-    print("drope")
+    print("drop player 1")
+    one.add_one(one.drops)
     if player3:
         #player3 last tossed
-        pass
+        three.add_one(three.points)
     elif player4:
         #player4 last tossed
-        pass
+        four.add_one(four.points)
     else:
         pass
 
@@ -46,7 +69,9 @@ def zfunc():
     global player3
     global player4
     
-    print("tossingz")
+    print("tossing player 2")
+    two.add_one(two.tosses)
+
     player1 = False
     player2 = True
     player3 = False
@@ -55,20 +80,22 @@ def zfunc():
 
 def xfunc():
 
-    print("catchx")
+    print("catch player 2")
+    two.add_one(two.catches)
  
 
 def cfunc():
     global player3
     global player4
     
-    print("dropc")
+    print("drop player 2")
+    two.add_one(two.drops)
     if player3:
         #player3 last tossed
-        pass
+        three.add_one(three.points)
     elif player4:
         #player4 last tossed
-        pass
+        four.add_one(four.points)
     else:
         pass
 
@@ -80,7 +107,9 @@ def ifunc():
     global player3
     global player4
     
-    print("tossingi")
+    print("tossing player 3")
+    three.add_one(three.tosses)
+
     player1 = False
     player2 = False
     player3 = True
@@ -89,20 +118,21 @@ def ifunc():
 
 def ofunc():
 
-    print("catcho")
- 
+    print("catch player 3")
+    three.add_one(three.catches)
 
 def pfunc():
     global player1
     global player2
     
-    print("dropp")
+    print("drop player 3")
+    three.add_one(three.drops)
     if player1:
         #player1 last tossed
-        pass
+        one.add_one(one.points)
     elif player2:
         #player2 last tossed
-        pass
+        two.add_one(two.points)
     else:
         pass
 
@@ -114,7 +144,8 @@ def bfunc():
     global player3
     global player4
     
-    print("tossingb")
+    print("tossing player 4")
+    four.add_one(four.tosses)
     player1 = False
     player2 = False
     player3 = False
@@ -123,20 +154,22 @@ def bfunc():
 
 def nfunc():
 
-    print("catchn")
+    print("catch player 4")
+    four.add_one(four.catches)
  
 
 def mfunc():
     global player1
     global player2
     
-    print("dropm")
+    print("drop player 4")
+    four.add_one(four.drops)
     if player1:
         #player1 last tossed
-        pass
+        one.add_one(one.points)
     elif player2:
         #player2 last tossed
-        pass
+        two.add_one(two.points)
     else:
         pass
 
@@ -149,16 +182,16 @@ def qwefunc():
 
     if player1:
         #player1point
-        pass
+        one.add_one(one.points)
     elif player2:
         #player2point
-        pass
+        two.add_one(two.points)
     elif player3:
         #player3point
-        pass
+        three.add_one(three.points)
     elif player4:
         #player4point
-        pass
+        four.add_one(four.points)
     else:
         pass
 
@@ -184,4 +217,8 @@ keyboard.add_hotkey('m', mfunc)
 
 
 
-keyboard.wait()
+keyboard.wait("esc")
+print(one.get_stats(), "player 1")
+print(two.get_stats(), "player 2")
+print(three.get_stats(), "player 3")
+print(four.get_stats(), "player 4")
