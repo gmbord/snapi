@@ -2,7 +2,8 @@ import keyboard
 
 def qfunc():
     
-    keyboard.add_hotkey('q+w+e', qwefunc)
+    l = keyboard.read_key()
+    
     print("q")
     keyboard.wait('a', afunc)
 
@@ -26,9 +27,13 @@ def asdfunc():
     print("point A!")
 
 
-keyboard.add_hotkey('q', qfunc)
-keyboard.add_hotkey('w', wfunc)
-keyboard.add_hotkey('e', efunc)
+# keyboard.add_hotkey('q', qfunc)
+# keyboard.add_hotkey('w', wfunc)
+# keyboard.add_hotkey('e', efunc)
+while True:
+    l = keyboard.read_key()
+    print()
+    print(l)
 
 
 keyboard.wait("esc")
