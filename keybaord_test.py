@@ -11,7 +11,7 @@ class Player:
         return (self.tosses, self.points, self.catches, self.drops)
     
     def add_one(self, var):
-        self.__setattr__(var, self.__getattribute__(var) + 1)
+        setattr(self, var, getattr(self, var) + 1)
 
 one = Player()
 two = Player()
