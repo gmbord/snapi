@@ -28,7 +28,7 @@ def asdfunc():
     print("point A!")
 
 
-# keyboard.add_hotkey('q', qfunc)
+keyboard.add_hotkey('q', qfunc)
 # keyboard.add_hotkey('w', wfunc)
 # keyboard.add_hotkey('e', efunc)
 def main():
@@ -41,5 +41,5 @@ def main():
 
 
 
-main()
-
+# main()
+keyboard.wait()
