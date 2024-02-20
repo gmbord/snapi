@@ -1,13 +1,13 @@
 import keyboard
 
 def qfunc():
-    keyboard.remove_all_hotkeys()
+    
     keyboard.add_hotkey('q+w+e', qwefunc)
     print("q")
     keyboard.wait('a', afunc)
 
 def afunc():
-    keyboard.remove_all_hotkeys()
+    
     keyboard.add_hotkey('a+s+d', asdfunc)
     print("a")
     keyboard.wait('q', qfunc)
