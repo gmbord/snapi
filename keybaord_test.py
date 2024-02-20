@@ -1,42 +1,44 @@
 import keyboard
 import time
 
+team1 = False
+team2 = False
+
 def qfunc():
+    global team1
+    global team2
     
-    l = keyboard.read_key()
-    
-    print("q")
-    keyboard.wait('a', afunc)
+    print("tossingq")
+    team1 = True
+    team2 = False
 
 def afunc():
+    global team1
+    global team2
     
-    keyboard.add_hotkey('a+s+d', asdfunc)
-    print("a")
-    keyboard.wait('q', qfunc)
+    print("tossinga")
+    team1 = True
+    team2 = False
+    
     
 
-def wfunc():
-    print("w press")
+# def wfunc():
+#     print("w press")
 
-def efunc():
-    print("e press")
+# def efunc():
+#     print("e press")
 
-def qwefunc():
-    print("point Q!")
+# def qwefunc():
+#     print("point Q!")
 
-def asdfunc():
-    print("point A!")
+# def asdfunc():
+#     print("point A!")
 
 
-# keyboard.add_hotkey('q', qfunc)
-keyboard.add_hotkey('w', wfunc)
+keyboard.add_hotkey('q', qfunc)
+keyboard.add_hotkey('a', afunc)
 # keyboard.add_hotkey('e', efunc)
-def main():
-    l = keyboard.read_key()
-    print()
-    print(l)
-    time.sleep(0.05)
-    main()    
+
     
 
 
