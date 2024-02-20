@@ -1,4 +1,5 @@
 import keyboard
+import time
 
 def qfunc():
     
@@ -32,9 +33,16 @@ def asdfunc():
 # keyboard.add_hotkey('e', efunc)
 def main():
     l = keyboard.read_key()
-    # print()
-    # print(l)
+    print()
+    print(l)
     main()    
+    time.sleep(0.05)
 
-main()
+
+l = keyboard.read_key()
+print()
+print(l)
+main()    
+time.sleep(0.05)
+# main()
 
