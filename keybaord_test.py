@@ -35,14 +35,11 @@ def main():
     l = keyboard.read_key()
     print()
     print(l)
-    main()    
     time.sleep(0.05)
+    main()    
+    
 
 
-l = keyboard.read_key()
-print()
-print(l)
-# main()    
-time.sleep(0.05)
-# main()
+
+main()
 
