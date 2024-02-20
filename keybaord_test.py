@@ -42,7 +42,7 @@ def main():
 l = keyboard.read_key()
 print()
 print(l)
-main()    
+# main()    
 time.sleep(0.05)
 # main()
 
