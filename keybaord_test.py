@@ -32,7 +32,7 @@ def qfunc():
     global player4
     
     print("tossing player 1")
-    one.add_one(one.tosses)
+    one.add_one("tosses")
 
     player1 = True
     player2 = False
@@ -43,7 +43,7 @@ def qfunc():
 def wfunc():
 
     print("catch player 1")
-    one.add_one(one.catches)
+    one.add_one("catches")
  
 
 def efunc():
@@ -51,13 +51,13 @@ def efunc():
     global player4
     
     print("drop player 1")
-    one.add_one(one.drops)
+    one.add_one("drops")
     if player3:
         #player3 last tossed
-        three.add_one(three.points)
+        three.add_one("points")
     elif player4:
         #player4 last tossed
-        four.add_one(four.points)
+        four.add_one("points")
     else:
         pass
 
@@ -70,7 +70,7 @@ def zfunc():
     global player4
     
     print("tossing player 2")
-    two.add_one(two.tosses)
+    two.add_one("tosses")
 
     player1 = False
     player2 = True
@@ -81,7 +81,7 @@ def zfunc():
 def xfunc():
 
     print("catch player 2")
-    two.add_one(two.catches)
+    two.add_one("catches")
  
 
 def cfunc():
@@ -89,13 +89,13 @@ def cfunc():
     global player4
     
     print("drop player 2")
-    two.add_one(two.drops)
+    two.add_one("drops")
     if player3:
         #player3 last tossed
-        three.add_one(three.points)
+        three.add_one("points")
     elif player4:
         #player4 last tossed
-        four.add_one(four.points)
+        four.add_one("points")
     else:
         pass
 
@@ -108,7 +108,7 @@ def ifunc():
     global player4
     
     print("tossing player 3")
-    three.add_one(three.tosses)
+    three.add_one("tosses")
 
     player1 = False
     player2 = False
@@ -119,20 +119,20 @@ def ifunc():
 def ofunc():
 
     print("catch player 3")
-    three.add_one(three.catches)
+    three.add_one("catches")
 
 def pfunc():
     global player1
     global player2
     
     print("drop player 3")
-    three.add_one(three.drops)
+    three.add_one("drops")
     if player1:
         #player1 last tossed
-        one.add_one(one.points)
+        one.add_one("points")
     elif player2:
         #player2 last tossed
-        two.add_one(two.points)
+        two.add_one("points")
     else:
         pass
 
