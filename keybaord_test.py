@@ -2,7 +2,7 @@ import keyboard
 import time
 
 team1 = False
-team2 = False
+
 
 def qfunc():
     global team1
@@ -10,15 +10,15 @@ def qfunc():
     
     print("tossingq")
     team1 = True
-    team2 = False
+    print(team1)
 
 def afunc():
     global team1
     global team2
     
     print("tossinga")
-    team1 = True
-    team2 = False
+    team1 = False
+    print(team1)
     
     
 
