@@ -235,6 +235,11 @@ keyboard.add_hotkey('n', nfunc)
 keyboard.add_hotkey('m', mfunc)
 
 def update_game():
+    global p1add
+    global p2add
+    global p3add
+    global p4add
+    
     payload = {}
     headers = {}
 
@@ -251,6 +256,11 @@ def update_game():
     updatedp2 = p2stats + p2add
     updatedp3 = p3stats + p3add
     updatedp4 = p4stats + p4add
+
+    p1add = np.array([0,0,0,0])
+    p2add = np.array([0,0,0,0])
+    p3add = np.array([0,0,0,0])
+    p4add = np.array([0,0,0,0])
 
     payload = {'p1Stats': updatedp1.tolist(),
     'p2Stats': updatedp2.tolist(),
