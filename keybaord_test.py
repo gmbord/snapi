@@ -1,22 +1,16 @@
 import keyboard
+import requests
+import json
+import numpy as np
 
-class Player:
-    def __init__(self):
-        self.tosses = 0
-        self.points = 0
-        self.catches = 0
-        self.drops = 0
+ag = "http://localhost:5050/api/activeGames"
+ug = "http://localhost:5050/api/updateGameExternal"
 
-    def get_stats(self):
-        return (self.tosses, self.points, self.catches, self.drops)
-    
-    def add_one(self, var):
-        setattr(self, var, getattr(self, var) + 1)
 
-one = Player()
-two = Player()
-three = Player()
-four = Player()
+p1add = np.array([0,0,0,0])
+p2add = np.array([0,0,0,0])
+p3add = np.array([0,0,0,0])
+p4add = np.array([0,0,0,0])
 
 
 player1 = False
@@ -32,18 +26,21 @@ def qfunc():
     global player4
     
     print("tossing player 1")
-    one.add_one("tosses")
+    p1add[0] += 1
 
     player1 = True
     player2 = False
     player3 = False
     player4 = False
-
+    
+    update_game()
 
 def wfunc():
 
     print("catch player 1")
-    one.add_one("catches")
+    p1add[2] += 1
+
+    update_game()
  
 
 def efunc():
@@ -51,15 +48,17 @@ def efunc():
     global player4
     
     print("drop player 1")
-    one.add_one("drops")
+    p1add[3] += 1
     if player3:
         #player3 last tossed
-        three.add_one("points")
+        p3add[1] += 1
     elif player4:
         #player4 last tossed
-        four.add_one("points")
+        p4add[1] += 1
     else:
         pass
+
+    update_game()
 
 
 #player2 team 1
@@ -70,18 +69,22 @@ def zfunc():
     global player4
     
     print("tossing player 2")
-    two.add_one("tosses")
+    p2add[0] += 1
 
     player1 = False
     player2 = True
     player3 = False
     player4 = False
 
+    update_game()
+
 
 def xfunc():
 
     print("catch player 2")
-    two.add_one("catches")
+    p2add[2] += 1
+
+    update_game()
  
 
 def cfunc():
@@ -89,15 +92,17 @@ def cfunc():
     global player4
     
     print("drop player 2")
-    two.add_one("drops")
+    p2add[3] += 1
     if player3:
         #player3 last tossed
-        three.add_one("points")
+        p3add[1] += 1
     elif player4:
         #player4 last tossed
-        four.add_one("points")
+        p4add[1] += 1
     else:
         pass
+
+    update_game()
 
 
 #player3 team 2
@@ -108,33 +113,39 @@ def ifunc():
     global player4
     
     print("tossing player 3")
-    three.add_one("tosses")
+    p3add[0] += 1
 
     player1 = False
     player2 = False
     player3 = True
     player4 = False
 
+    update_game()
+
 
 def ofunc():
 
     print("catch player 3")
-    three.add_one("catches")
+    p3add[2] += 1
+
+    update_game()
 
 def pfunc():
     global player1
     global player2
     
     print("drop player 3")
-    three.add_one("drops")
+    p3add[3] += 1
     if player1:
         #player1 last tossed
-        one.add_one("points")
+        p1add[1] += 1
     elif player2:
         #player2 last tossed
-        two.add_one("points")
+        p2add[1] += 1
     else:
         pass
+
+    update_game()
 
 
 #player4 team 2
@@ -145,17 +156,21 @@ def bfunc():
     global player4
     
     print("tossing player 4")
-    four.add_one("tosses")
+    p4add[0] += 1
     player1 = False
     player2 = False
     player3 = False
     player4 = True
 
+    update_game()
+
 
 def nfunc():
 
     print("catch player 4")
-    four.add_one("catches")
+    p4add[2] += 1
+
+    update_game()
  
 
 def mfunc():
@@ -163,15 +178,17 @@ def mfunc():
     global player2
     
     print("drop player 4")
-    four.add_one("drops")
+    p4add[3] += 1
     if player1:
         #player1 last tossed
-        one.add_one("points")
+        p1add[1] += 1
     elif player2:
         #player2 last tossed
-        two.add_one("points")
+        p2add[1] += 1
     else:
         pass
+
+    update_game()
 
 
 def qwefunc():
@@ -182,18 +199,20 @@ def qwefunc():
 
     if player1:
         #player1point
-        one.add_one("points")
+        p1add[1] += 1
     elif player2:
         #player2point
-        two.add_one("points")
+        p2add[1] += 1
     elif player3:
         #player3point
-        three.add_one("points")
+        p3add[1] += 1
     elif player4:
         #player4point
-        four.add_one("points")
+        p4add[1] += 1
     else:
         pass
+
+    update_game()
 
 
 #player1 team 1
@@ -215,10 +234,32 @@ keyboard.add_hotkey('b', bfunc)
 keyboard.add_hotkey('n', nfunc)
 keyboard.add_hotkey('m', mfunc)
 
+def update_game():
+    payload = {}
+    headers = {}
 
+    response = requests.request("GET", ag, headers=headers, data=payload)
+
+    data = response.json()
+    game = data[0]
+    p1stats = np.array(game["p1Stats"])
+    p2stats = np.array(game["p2Stats"])
+    p3stats = np.array(game["p3Stats"])
+    p4stats = np.array(game["p4Stats"])
+
+    updatedp1 = p1stats + p1add
+    updatedp2 = p2stats + p2add
+    updatedp3 = p3stats + p3add
+    updatedp4 = p4stats + p4add
+
+    payload = {'p1Stats': updatedp1.tolist(),
+    'p2Stats': updatedp2.tolist(),
+    'p3Stats': updatedp3.tolist(),
+    'p4Stats': updatedp4.tolist(),
+    'id': '6621afc5aa83a8c287a34e77'}
+
+    response = requests.post(ug, json=payload)
+    
 
 keyboard.wait("esc")
-print(one.get_stats(), "player 1")
-print(two.get_stats(), "player 2")
-print(three.get_stats(), "player 3")
-print(four.get_stats(), "player 4")
+
