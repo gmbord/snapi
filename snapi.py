@@ -198,6 +198,7 @@ def mfunc():
 
 
 def qwefunc():
+    print("POINT SCORED!")
     global player1
     global player2
     global player3
