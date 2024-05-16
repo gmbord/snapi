@@ -201,6 +201,7 @@ def mfunc():
 
 
 def qwefunc():
+    global last_qwe_call_time
     current_time = time.time()
     # Check if half a second has passed since the last call to qwefunc
     if current_time - last_qwe_call_time >= 0.5:
