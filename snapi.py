@@ -237,9 +237,9 @@ keyboard.add_hotkey('w+e+q', qwefunc)
 keyboard.add_hotkey('e+w+q', qwefunc)
 keyboard.add_hotkey('e+q+w', qwefunc)
 #player1 team 1
-keyboard.add_hotkey('q', qfunc)
+keyboard.add_hotkey('e', qfunc)
 keyboard.add_hotkey('w', wfunc)
-keyboard.add_hotkey('e', efunc)
+keyboard.add_hotkey('q', efunc)
 #player2 team 1
 keyboard.add_hotkey('z', zfunc)
 keyboard.add_hotkey('x', xfunc)
