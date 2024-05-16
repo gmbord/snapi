@@ -222,6 +222,11 @@ def qwefunc():
     update_game()
 
 keyboard.add_hotkey('q+w+e', qwefunc)
+keyboard.add_hotkey('q+e+w', qwefunc)
+keyboard.add_hotkey('w+e+q', qwefunc)
+keyboard.add_hotkey('w+q+e', qwefunc)
+keyboard.add_hotkey('e+q+w', qwefunc)
+keyboard.add_hotkey('e+w+q', qwefunc)
 #player1 team 1
 keyboard.add_hotkey('q', qfunc)
 keyboard.add_hotkey('w', wfunc)
