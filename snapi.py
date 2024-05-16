@@ -221,7 +221,7 @@ def qwefunc():
 
     update_game()
 
-
+keyboard.add_hotkey('qwe', qwefunc)
 #player1 team 1
 keyboard.add_hotkey('q', qfunc)
 keyboard.add_hotkey('w', wfunc)
