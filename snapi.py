@@ -272,8 +272,7 @@ def update_game():
     payload = {'p1Stats': updatedp1.tolist(),
     'p2Stats': updatedp2.tolist(),
     'p3Stats': updatedp3.tolist(),
-    'p4Stats': updatedp4.tolist(),
-    'id': '6621afc5aa83a8c287a34e77'}
+    'p4Stats': updatedp4.tolist(),}
 
     response = requests.post(ug, json=payload)
     
