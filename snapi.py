@@ -1,3 +1,7 @@
+import time
+time.sleep(15000)
+
+
 import keyboard
 import requests
 import json
