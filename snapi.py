@@ -12,6 +12,9 @@ uri = "https://snapi-web.onrender.com/"
 ag =  uri + "api/activeGames"
 ug = uri + "api/updateGameExternal"
 
+last_qwe_call_time = time.time()
+
+
 
 p1add = np.array([0,0,0,0])
 p2add = np.array([0,0,0,0])
@@ -198,35 +201,40 @@ def mfunc():
 
 
 def qwefunc():
-    print("POINT SCORED!")
-    global player1
-    global player2
-    global player3
-    global player4
+    current_time = time.time()
+    # Check if half a second has passed since the last call to qwefunc
+    if current_time - last_qwe_call_time >= 0.5:
+        print("POINT SCORED!")
+        global player1
+        global player2
+        global player3
+        global player4
 
-    if player1:
-        #player1point
-        p1add[1] += 1
-    elif player2:
-        #player2point
-        p2add[1] += 1
-    elif player3:
-        #player3point
-        p3add[1] += 1
-    elif player4:
-        #player4point
-        p4add[1] += 1
-    else:
-        pass
+        if player1:
+            #player1point
+            p1add[1] += 1
+        elif player2:
+            #player2point
+            p2add[1] += 1
+        elif player3:
+            #player3point
+            p3add[1] += 1
+        elif player4:
+            #player4point
+            p4add[1] += 1
+        else:
+            pass
 
-    update_game()
+        update_game()
+        last_qwe_call_time = time.time()
+    
 
 keyboard.add_hotkey('q+w+e', qwefunc)
 keyboard.add_hotkey('q+e+w', qwefunc)
-keyboard.add_hotkey('w+e+q', qwefunc)
 keyboard.add_hotkey('w+q+e', qwefunc)
-keyboard.add_hotkey('e+q+w', qwefunc)
+keyboard.add_hotkey('w+e+q', qwefunc)
 keyboard.add_hotkey('e+w+q', qwefunc)
+keyboard.add_hotkey('e+q+w', qwefunc)
 #player1 team 1
 keyboard.add_hotkey('q', qfunc)
 keyboard.add_hotkey('w', wfunc)
