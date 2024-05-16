@@ -3,8 +3,10 @@ import requests
 import json
 import numpy as np
 
-ag = "http://localhost:5050/api/activeGames"
-ug = "http://localhost:5050/api/updateGameExternal"
+
+uri = "https://snapi-web.onrender.com/"
+ag =  uri + "api/activeGames"
+ug = uri + "api/updateGameExternal"
 
 
 p1add = np.array([0,0,0,0])
