@@ -1,5 +1,5 @@
 import time
-time.sleep(15000)
+time.sleep(15)
 
 
 import keyboard
