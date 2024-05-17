@@ -1,6 +1,6 @@
 import time
-time.sleep(15)
-print("not sleeping")
+time.sleep(2.5)
+print("We ready")
 
 import keyboard
 import requests
@@ -230,16 +230,12 @@ def qwefunc():
         last_qwe_call_time = time.time()
     
 
-keyboard.add_hotkey('q+w+e', qwefunc)
-keyboard.add_hotkey('q+e+w', qwefunc)
-keyboard.add_hotkey('w+q+e', qwefunc)
-keyboard.add_hotkey('w+e+q', qwefunc)
-keyboard.add_hotkey('e+w+q', qwefunc)
-keyboard.add_hotkey('e+q+w', qwefunc)
+keyboard.add_hotkey('r', qwefunc)
+
 #player1 team 1
-keyboard.add_hotkey('e', qfunc)
+keyboard.add_hotkey('q', qfunc)
 keyboard.add_hotkey('w', wfunc)
-keyboard.add_hotkey('q', efunc)
+keyboard.add_hotkey('e', efunc)
 #player2 team 1
 keyboard.add_hotkey('z', zfunc)
 keyboard.add_hotkey('x', xfunc)
