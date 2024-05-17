@@ -230,12 +230,12 @@ def qwefunc():
         last_qwe_call_time = time.time()
     
 
-keyboard.add_hotkey('r', qwefunc)
+keyboard.add_hotkey('q', qwefunc)
 
 #player1 team 1
-keyboard.add_hotkey('q', qfunc)
-keyboard.add_hotkey('w', wfunc)
-keyboard.add_hotkey('e', efunc)
+keyboard.add_hotkey('r', qfunc)
+keyboard.add_hotkey('e', wfunc)
+keyboard.add_hotkey('w', efunc)
 #player2 team 1
 keyboard.add_hotkey('z', zfunc)
 keyboard.add_hotkey('x', xfunc)
