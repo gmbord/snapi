@@ -477,7 +477,11 @@ if __name__ == "__main__":
     # Adding additional metrics
     season_df["losses"] = season_df["games"] - season_df["wins"]
 
-    season_df["record"] = season_df["wins"] / season_df["games"]
+    # Avoid division by zero for record
+    season_df["record"] = season_df.apply(
+        lambda row: row["wins"] / row["games"] if row["games"] > 0 else 0.0,
+        axis=1,
+    )
 
     season_df["points/toss"] = season_df.apply(
         lambda row: float("inf")
@@ -502,10 +506,10 @@ if __name__ == "__main__":
     # round all stats to three decimal places
     season_df = season_df.round(3)
 
-    # make all statistics except p/t and c/d integers
+    # Fill NaN values with 0 for integer columns before casting
     for col in season_df.columns:
         if col not in ["points/toss", "catches/drop", "record"]:
-            season_df[col] = season_df[col].astype(int)
+            season_df[col] = pd.to_numeric(season_df[col], errors="coerce").fillna(0).astype(int)
 
     print("\nStats saved\n")
 
