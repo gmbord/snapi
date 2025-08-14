@@ -1,5 +1,5 @@
 import pandas as pd
-import openpyxl
+# import openpyxl
 import os
 
 
@@ -78,7 +78,8 @@ class Player:
         - If the result is a catch or drop, it prompts for the other player's name (if not provided).
         - Updates relevant statistics based on the toss result, incrementing points for specific outcomes.
         """
-        self.tosses += 1
+        if result != "wins" and result != "games":
+            self.tosses += 1
 
         if result == "catches":
             player_dict[other].catches += 1
@@ -502,7 +503,7 @@ if __name__ == "__main__":
 
     # make all statistics except p/t and c/d integers
     for col in season_df.columns:
-        if col not in ["points/toss", "catches/drop"]:
+        if col not in ["points/toss", "catches/drop", "record"]:
             season_df[col] = season_df[col].astype(int)
 
     print("\nStats saved\n")
